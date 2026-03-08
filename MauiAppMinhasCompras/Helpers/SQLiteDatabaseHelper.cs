@@ -3,8 +3,7 @@ using SQLite;
 
 
 namespace MauiAppMinhasCompras.Helpers
-{
-    public class SQLiteDatabaseHelper
+{public class SQLiteDatabaseHelper
     { 
         readonly SQLiteAsyncConnection _conn;
         public SQLiteDatabaseHelper(string path) 
