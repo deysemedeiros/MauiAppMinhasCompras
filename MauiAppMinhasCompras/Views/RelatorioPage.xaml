@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.RelatorioPage"
+             Title="Relatório por Categoria">
+
+    <VerticalStackLayout Padding="10">
+        <Label Text="Relatório de Gastos por Categoria"
+               FontAttributes="Bold"
+               FontSize="20"
+               HorizontalOptions="Center" />
+
+        <CollectionView x:Name="lst_relatorio">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" CornerRadius="8" Margin="5" Padding="10">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding Categoria}" FontAttributes="Bold" FontSize="18" />
+                            <Label Text="{Binding QuantidadeItens, StringFormat='Itens: {0}'}"
+                                   FontSize="14" TextColor="Gray"/>
+                            <Label Text="{Binding Total, StringFormat='Total: R$ {0:F2}'}"
+                                   FontSize="16" TextColor="Green"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage> 

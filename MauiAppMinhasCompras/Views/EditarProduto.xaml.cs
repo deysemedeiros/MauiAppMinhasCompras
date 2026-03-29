@@ -13,15 +13,18 @@ public partial class EditarProduto : ContentPage
     {
         try
         {
-            Produto produto_anexado = BindingContext as Produto;
+            Produto p = (Produto)BindingContext;
 
-            Produto p = new Produto
+            if (pickerCategoria.SelectedItem == null)
             {
-                Id = produto_anexado.Id,
-                Descricao = txt_descricao.Text,
-                Quantidade = Convert.ToDouble(txt_quantidade.Text),
-                Preco = Convert.ToDouble(txt_preco.Text)
-            };
+                await DisplayAlert("Aviso", "Por favor, selecione uma categoria", "OK");
+                return;
+            }
+
+            p.Descricao = txt_descricao.Text;
+            p.Quantidade = Convert.ToDouble(txt_quantidade.Text);
+            p.Preco = Convert.ToDouble(txt_preco.Text);
+            p.Categoria = pickerCategoria.SelectedItem.ToString();
 
             await App.Db.Update(p);
             await DisplayAlert("Sucesso!", "Registro Atualizado", "OK");
